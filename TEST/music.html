@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+</head>
+<style>
+    /* STYLE */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #212121;
+    }
+
+    .music__wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+    }
+
+    .music__wrapper:hover {
+        opacity: 0.8;
+        transform: scale(1.1);
+        transition: transform 0.2s;
+    }
+
+    .music__wrapper.disabled {
+        opacity: 0.8;
+    }
+
+    .music__wrapper.disabled:hover {
+        opacity: 1;
+    }
+
+    .music__wrapper span {
+        --d: 10px;
+        display: inline-block;
+        margin-inline: max(2px, calc(var(--d) / 5));
+        width: calc(var(--d)/2.5);
+        height: var(--d);
+        background: white;
+        border-radius: calc(var(--d) / 2);
+        animation: scale-up-down 300ms var(--delay) linear alternate infinite;
+    }
+
+    .music__wrapper span:nth-child(1) {
+        --delay: calc(-100ms * 11);
+    }
+
+    .music__wrapper span:nth-child(2) {
+        --delay: calc(-100ms * 10);
+    }
+
+    .music__wrapper span:nth-child(3) {
+        --delay: calc(-100ms * 7);
+    }
+
+    .music__wrapper span:nth-child(4) {
+        --delay: calc(-100ms * 6);
+    }
+
+    .music__wrapper span:nth-child(5) {
+        --delay: calc(-100ms * 4);
+    }
+
+    .music__wrapper span:nth-child(6) {
+        --delay: calc(-100ms * 3);
+    }
+
+    .music__wrapper span:nth-child(7) {
+        --delay: calc(-100ms * 0);
+    }
+
+    @keyframes scale-up-down {
+        to {
+            height: calc(var(--d) * 4);
+        }
+    }
+</style>
+
+<body>
+    <!-- HTML -->
+    <div class="music__wrapper disabled">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <script>
+        // JAVASCRIPT
+        const music__wrapper = document.querySelector('.music__wrapper');
+        const spans = document.querySelectorAll('span');
+        if (music__wrapper.classList.contains('disabled')) {
+            setTimeout(() => {
+                spans.forEach((span, index) => {
+                    span.style.animationPlayState = 'paused';
+                });
+            }, 630);
+        }
+        music__wrapper.addEventListener('click', () => {
+            if (music__wrapper.classList.contains('disabled')) {
+                music__wrapper.classList.remove('disabled');
+                spans.forEach((span, index) => {
+                    span.style.animationPlayState = 'running';
+                });
+            } else {
+                music__wrapper.classList.add('disabled');
+                spans.forEach((span, index) => {
+                    span.style.animationPlayState = 'paused';
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>

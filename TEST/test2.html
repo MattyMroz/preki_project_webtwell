@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+</head>
+<style>
+    /* STYLE */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+    }
+
+    body {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #212121;
+    }
+
+    .wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        --d: 10px;
+        display: inline-block;
+        margin-inline: max(2px, calc(var(--d) / 5));
+        width: calc(var(--d)/2.5);
+        height: var(--d);
+        background: white;
+        border-radius: calc(var(--d) / 2);
+        animation: scale-up-down 300ms var(--delay) linear alternate infinite;
+    }
+
+    span:nth-child(1) {
+        --delay: calc(-100ms * 11);
+    }
+
+    span:nth-child(2) {
+        --delay: calc(-100ms * 10);
+    }
+
+    span:nth-child(3) {
+        --delay: calc(-100ms * 7);
+    }
+
+    span:nth-child(4) {
+        --delay: calc(-100ms * 6);
+    }
+
+    span:nth-child(5) {
+        --delay: calc(-100ms * 4);
+    }
+
+    span:nth-child(6) {
+        --delay: calc(-100ms * 3);
+    }
+
+    span:nth-child(7) {
+        --delay: calc(-100ms * 0);
+    }
+
+
+
+    @keyframes scale-up-down {
+        to {
+            height: calc(var(--d) * 4);
+        }
+    }
+</style>
+
+<body>
+    <!-- HTML -->
+    <div class="wrapper">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <script>
+        // JAVASCRIPT
+
+    </script>
+</body>
+
+</html>
