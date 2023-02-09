@@ -13,13 +13,18 @@
 
     <title>Webtwell - We web really well</title>
 
-    <link rel="shortcut icon" href="assets/img/logo/webtwell_logo_black_white.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/logo/webtwell_logo_black_white.svg" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+
 </head>
 
 <body>
@@ -29,12 +34,7 @@
             <div class="nav container">
                 <div data-aos="fade-down-right" data-aos-duration="1000" class="nav__logo">
                     <a href="#home" class="text__filter navlink">
-                        <div class="nav__img">
-                            <img class="nav__img" src="assets/img/icon.png" alt="We">
-                        </div>
-                        <div class="nav__name">
-
-                        </div>
+                        <img class="nav__img" src="assets/img/logo/webtwell_logo_baner_white.svg" alt="Webtwell">
                     </a>
                 </div>
                 <nav data-aos="fade-down-left" data-aos-duration="1000" class="navbar">
@@ -52,16 +52,17 @@
                             <a href="#contact_us" class="nav__link navlink">Contact Us</a>
                         </li>
                     </ul>
+                    <button id="toggle__music-button" class="music__wrapper disabled">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <!-- <audio id="music" src="assets/audio/Wake Up.mp3" autoplay="false" loop></audio> -->
+                    </button>
                 </nav>
-                <div class="music__wrapper">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
                 <button data-aos="fade-down-left" data-aos-duration="1000" class="burger text__filter">
                     <svg id="burger-svg">
                         <rect class="burger-svg__base" />
@@ -77,11 +78,29 @@
         </header>
         <!-- =============== HOME =============== -->
         <section class="home section" id="home">
-            <div class="home__img"></div>
+            <div class="home__img-shadows">
+                <div class="home__img"></div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <div class="container grid">
                 <div class="home__data">
+                    <div class="home__title title__1 text__filter">
+                        Webt
+                    </div>
+                    <div class="home__title title__2 text__filter">
+                        well
+                    </div>
+                    <div class="home__subtitle subtitle__left text__filter">
+                        <span>Right now&nbsp</span>Let your business <br> stand out and change <br> the game</span>
+                    </div>
+                    <div class="home__subtitle subtitle__right text__filter">
+                        <span>Start with us</span>
+                        <br>
+                        <span>We web<br>really well</span>
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
         <!-- =============== SECTION =============== -->
@@ -89,17 +108,6 @@
             <div class="container grid">
                 <div class="content">
                     <div class="data">
-                        <!-- <h3 data-aos="fade-up" class="section__subtitle text__filter">
-                            Real-ESRGAN – Skalowanie, Ulepszanie Obrazów i Anime
-                        </h3>
-                        <p data-aos="fade-up" class="normal__text text__filter">
-                            Przykłądowy tekst
-                        </p> -->
-                    </div>
-                    <div class="data">
-                        <div class="img__wrapper">
-                            <img data-aos="fade-up" src="assets/img/1.png" alt="image">
-                        </div>
                     </div>
                 </div>
                 <div class="content">

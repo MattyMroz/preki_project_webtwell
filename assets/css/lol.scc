@@ -1,0 +1,26 @@
+/* Group 13 1 */
+
+cień
+position: absolute;
+width: 1480px;
+height: 1342px;
+left: 233px;
+top: 51px;
+
+background: url(Group 13.png);
+filter: blur(45px);
+/* Ellipse 2 */
+
+
+
+
+
+zielony cień
+position: absolute;
+width: 614px;
+height: 697px;
+left: 663px;
+top: 225px;
+
+background: #CBFD50;
+filter: blur(316.5px);

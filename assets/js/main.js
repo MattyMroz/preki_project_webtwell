@@ -1,32 +1,3 @@
-// JAVASCRIPT
-const music__wrapper = document.querySelector('.music__wrapper');
-const spans = document.querySelectorAll('span');
-if (music__wrapper.classList.contains('disabled')) {
-    setTimeout(() => {
-        spans.forEach((span, index) => {
-            span.style.animationPlayState = 'paused';
-        });
-    }, 630);
-}
-music__wrapper.addEventListener('click', () => {
-    if (music__wrapper.classList.contains('disabled')) {
-        music__wrapper.classList.remove('disabled');
-        spans.forEach((span, index) => {
-            span.style.animationPlayState = 'running';
-        });
-    } else {
-        music__wrapper.classList.add('disabled');
-        spans.forEach((span, index) => {
-            span.style.animationPlayState = 'paused';
-        });
-    }
-});
-
-
-
-
-
-
 $(document).ready(function () {
     const $body = $('body');
     const $header = $('.header');
@@ -187,10 +158,17 @@ $(document).ready(function () {
                 showCloseBurger();
                 $navbar.addClass('active');
                 $body.addClass('no__scroll');
+                // obróć element o 360 stopni
+                $navbar.css({
+                    'transform': 'rotate(-360deg)'
+                });
             } else {
                 showOpenBurger();
                 $navbar.removeClass('active');
                 $body.removeClass('no__scroll');
+                $navbar.css({
+                    'transform': 'rotate(360deg)'
+                });
             }
         }
 
@@ -205,6 +183,9 @@ $(document).ready(function () {
                     showOpenBurger();
                     $navbar.removeClass('active');
                     $body.removeClass('no__scroll');
+                    $navbar.css({
+                        'transform': 'rotate(360deg)'
+                    });
                 }
             }
         }
@@ -217,6 +198,9 @@ $(document).ready(function () {
             showOpenBurger();
             $navbar.removeClass('active');
             $body.removeClass('no__scroll');
+            $navbar.css({
+                'transform': 'rotate(360deg)'
+            });
         }
     });
 
@@ -264,143 +248,6 @@ $(document).ready(function () {
         });
     });
 
-    // ========== Particles ==========
-    $(function () {
-        const $canvas = $('#canvas')[0];
-        const $ctx = $canvas.getContext('2d');
-        $canvas.width = window.innerWidth;
-        $canvas.height = window.innerHeight;
-        const $particlesArray = [];
-        let $hue = 220;
-        let $increments = true;
-
-        const $particleCount = 3; // small is good
-        const $particleSize = 18;
-        const $particleLineLength = 1;
-
-        const $speedX = 3;
-        const halfSpeedX = $speedX / 2;
-        const $speedY = 3;
-        const halfSpeedY = $speedY / 2;
-
-        $(window).resize(function () {
-            $canvas.width = window.innerWidth;
-            $canvas.height = window.innerHeight;
-        });
-
-        const $mouse = {
-            x: undefined,
-            y: undefined
-        }
-
-        function ClickOrMove(event) {
-            $mouse.x = event.x;
-            $mouse.y = event.y;
-            // ilosć kulek
-            for (let i = 0; i < $particleCount; i++) {
-                let particle = new Particle($mouse.x, $mouse.y);
-                $particlesArray.push(particle);
-            }
-        }
-
-        // JQUERY nie działa :(
-        const $main = document.querySelector('main');
-
-        $main.addEventListener('click', ClickOrMove);
-        $main.addEventListener('mousemove', ClickOrMove);
-
-        class Particle {
-            constructor() {
-                this.x = $mouse.x;
-                this.y = $mouse.y;
-                // wielkość kulek
-                this.size = Math.random() * $particleSize + 1;
-                // szybkosć kulek
-                this.$speedX = Math.random() * $speedX - halfSpeedX;
-                this.$speedY = Math.random() * $speedY - halfSpeedY;
-                this.color = 'hsla(' + $hue + ', 100%, 50%, 0.5)';
-                // this.color = 'rgba(' + $hue + ', 100%, 50%, 0.5)';
-
-            }
-
-            update() {
-                this.x += this.$speedX;
-                this.y += this.$speedY;
-                if (this.x > 0.2) {
-                    this.size -= 0.1;
-                }
-            }
-
-            draw() {
-                $ctx.fillStyle = this.color;
-                $ctx.beginPath();
-                $ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                $ctx.fill();
-            }
-        }
-
-        function handleParticle() {
-            for (let i = 0; i < $particlesArray.length; i++) {
-                $particlesArray[i].update();
-                $particlesArray[i].draw();
-
-                for (let j = i; j < $particlesArray.length; j++) {
-                    const dx = $particlesArray[i].x - $particlesArray[j].x;
-                    const dy = $particlesArray[i].y - $particlesArray[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
-                        $ctx.beginPath();
-                        $ctx.strokeStyle = $particlesArray[i].color;
-                        // grubość linii
-                        // $ctx.lineWidth = $particleLineLength;
-                        $ctx.lineWidth = $particlesArray[i].size / 10;
-                        $ctx.moveTo($particlesArray[i].x, $particlesArray[i].y);
-                        $ctx.lineTo($particlesArray[j].x, $particlesArray[j].y);
-                        $ctx.stroke();
-                        $ctx.closePath();
-                    }
-                }
-
-                if ($particlesArray[i].size <= 0.3) {
-                    $particlesArray.splice(i, 1);
-                    i--;
-                }
-            }
-        }
-
-        function animate() {
-            // Rysowanie
-            $ctx.clearRect(0, 0, $canvas.width, $canvas.height);
-            // $ctx.fillStyle = 'rgba(0, 0, 0, 0.02)';
-            // $ctx.fillRect(0, 0, $canvas.width, $canvas.height);
-
-            // if ($increments) {
-            //     $hue += 2;
-            //     if ($hue >= 275) {
-            //         $increments = false;
-            //     }
-            // } else {
-            //     $hue -= 1;
-            //     if ($hue <= 220) {
-            //         $increments = true;
-            //     }
-            // }
-
-            $hue += 1;
-
-            // $canvas.style.filter = 'drop-shadow(0 0 3rem hsla(' + $hue + ', 100%, 50%, 0.5)) drop-shadow(0 0 1rem hsla(' + $hue + ', 100%, 50%, 0.5))';
-
-            document.body.style.setProperty('--selection-color', 'hsla(' + $hue + ',100%, 60%, .2)');
-
-            document.body.style.setProperty('--first-color', 'hsla(' + $hue + ',100%, 50%, .75)');
-
-            document.body.style.setProperty('--first-color-alt', 'hsla(' + $hue + ',100%, 50%, .75)');
-
-            handleParticle();
-            requestAnimationFrame(animate);
-        }
-        animate();
-    });
 
 
     // ========== Music ==========
@@ -481,4 +328,39 @@ $(document).ready(function () {
             $music[0].play();
         });
     });
+
+
+    // JAVASCRIPT
+    const music__wrapper = document.querySelector('.music__wrapper');
+    const spans = document.querySelectorAll('span');
+    if (music__wrapper.classList.contains('disabled')) {
+        setTimeout(() => {
+            spans.forEach((span) => {
+                span.style.animationPlayState = 'paused';
+            });
+        }, 555);
+    }
+    music__wrapper.addEventListener('click', () => {
+        if (music__wrapper.classList.contains('disabled')) {
+            music__wrapper.classList.remove('disabled');
+            spans.forEach((span) => {
+                span.style.animationPlayState = 'running';
+            });
+        } else {
+            music__wrapper.classList.add('disabled');
+            spans.forEach((span) => {
+                span.style.animationPlayState = 'paused';
+            });
+        }
+    });
+
+    const homeImgShadows = document.querySelector('.home__img-shadows');
+
+    document.addEventListener('mousemove', e => {
+        const x = (e.clientX / window.innerWidth);
+        const y = (e.clientY / window.innerHeight);
+        homeImgShadows.style.transform = `translate3D(${x * 5 - 3}%, ${y * 5}%, 0)`;
+    });
+
 });
+
