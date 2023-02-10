@@ -32,13 +32,16 @@
         <canvas id="canvas"></canvas>
         <header class="header">
             <div class="nav container">
-                <div data-aos="fade-down-right" data-aos-duration="1000" class="nav__logo">
+                <div class="nav__logo" data-aos="fade-down-right" data-aos-duration="1000">
                     <a href="#home" class="text__filter navlink">
                         <img class="nav__img" src="assets/img/logo/webtwell_logo_baner_white.svg" alt="Webtwell">
                     </a>
                 </div>
                 <nav data-aos="fade-down-left" data-aos-duration="1000" class="navbar">
                     <ul class="nav__list text__filter">
+                        <li class="nav__item">
+                            <a href="#home" class="nav__link navlink">Home</a>
+                        </li>
                         <li class="nav__item">
                             <a href="#about_us" class="nav__link navlink">About Us</a>
                         </li>
@@ -63,7 +66,12 @@
                         <!-- <audio id="music" src="assets/audio/Wake Up.mp3" autoplay="false" loop></audio> -->
                     </button>
                 </nav>
-                <button data-aos="fade-down-left" data-aos-duration="1000" class="burger text__filter">
+                <input id="burger" type="checkbox" />
+                <label class='burger__button-container' for="burger">
+                    <div class='button__menu'></div>
+                </label>
+
+                <!-- <button data-aos="fade-down-left" data-aos-duration="1000" class="burger text__filter">
                     <svg id="burger-svg">
                         <rect class="burger-svg__base" />
                         <title>Menu</title>
@@ -73,7 +81,7 @@
                             <rect class="burger-svg__bar-3" rx="3" x="5" y="35" width="40" height="4" />
                         </g>
                     </svg>
-                </button>
+                </button> -->
             </div>
         </header>
         <!-- =============== HOME =============== -->
@@ -92,19 +100,81 @@
                     <div class="home__title title__2 text__filter">
                         well
                     </div>
-                    <div class="home__subtitle subtitle__left text__filter">
-                        <span>Right now&nbsp</span>Let your business <br> stand out and change <br> the game</span>
+                    <div class="subtitle__left text__filter">
+                        <span>Right now&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        </span>Let your business <br>stand out and change<br>the game</span>
                     </div>
-                    <div class="home__subtitle subtitle__right text__filter">
-                        <span>Start with us</span>
-                        <br>
-                        <span>We web<br>really well</span>
+                    <div class="home__contact text__filter">
+                        <span class="home__contact-link">
+                            <a href="#contact_us" class="navlink">
+                                🡶 Contact Us
+                            </a>
+                        </span>
+                        <span class="home__contact-text">
+                            business websites starting from
+                            <span>$479</span>
+                        </span>
+                        <span class="home__contact-text"> one-time payment</span>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- =============== SECTION =============== -->
-        <section class="section" id="scaling">
+        <!-- =============== ABOUT US =============== -->
+        <section class="section" id="about_us">
+            <div class="container grid">
+                <div class="content">
+                    <div class="data">
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="data">
+                    </div>
+                    <div class="data">
+                        <div class="img__wrapper">
+                            <img data-aos="fade-up" src="assets/img/2.png" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =============== PORTFOLIO =============== -->
+        <section class="section" id="portfolio">
+            <div class="container grid">
+                <div class="content">
+                    <div class="data">
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="data">
+                    </div>
+                    <div class="data">
+                        <div class="img__wrapper">
+                            <img data-aos="fade-up" src="assets/img/2.png" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =============== SERVICES =============== -->
+        <section class="section" id="services">
+            <div class="container grid">
+                <div class="content">
+                    <div class="data">
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="data">
+                    </div>
+                    <div class="data">
+                        <div class="img__wrapper">
+                            <img data-aos="fade-up" src="assets/img/2.png" alt="image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =============== CONTACT US =============== -->
+        <section class="section" id="contact_us">
             <div class="container grid">
                 <div class="content">
                     <div class="data">
