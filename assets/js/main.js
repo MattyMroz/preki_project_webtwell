@@ -9,11 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (navbar.classList.contains('active')) {
                 body.classList.remove('no__scroll');
                 navbar.classList.remove('active');
-                navbar.style.transform = 'rotate(360deg)';
             } else {
                 body.classList.add('no__scroll');
                 navbar.classList.add('active');
-                navbar.style.transform = 'rotate(-360deg)';
             }
         });
 
@@ -140,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const homeImgShadows = document.querySelector('.home__img-shadows');
         document.addEventListener('mousemove', e => {
-            if (window.innerWidth < 768) return;
+            if (window.innerWidth < 888) return;
             const x = (e.clientX / window.innerWidth);
             const y = (e.clientY / window.innerHeight);
             homeImgShadows.style.transform = `translate3D(${x * 5 - 3}%, ${y * 5}%, 0)`;
