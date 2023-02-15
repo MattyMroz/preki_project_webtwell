@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    function burger() {
+    // NAVIGATION
+    function navigation() {
         const burger = document.getElementById('burger');
         const navbar = document.querySelector('.navbar');
         const body = document.querySelector('body');
 
+        // BURGER ON CLICK
         burger.addEventListener('click', () => {
             if (navbar.classList.contains('active')) {
                 body.classList.remove('no__scroll');
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // NAVLINK ON CLICK
         const navlink = document.querySelectorAll('.navlink');
         navlink.forEach((link) => {
             link.addEventListener('click', () => {
@@ -26,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // CLOSE BURGER ON RESIZE
         const header = document.querySelector('.header');
         window.addEventListener('resize', () => {
             if (navbar.classList.contains('active')) {
@@ -34,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+
+        // HEADER ON SCROLL
         window.addEventListener('scroll', () => {
             if (window.scrollY > 0) {
                 header.classList.add('header__scroll');
@@ -42,18 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // $navlink.click(function (e) {
-        //     e.preventDefault();
-        //     const $target = $($(this).attr('href'));
-        //     const targetOffset = $target.offset().top;
-        //     const headerHeight = $header.outerHeight();
-        //     const scrollTo = targetOffset - headerHeight;
-
-        //     $('html, body').animate({
-        //         scrollTop: scrollTo
-        //     }, 1000);
-        // });
-
+        // SMOOTH SCROLL
         navlink.forEach((link) => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -67,40 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
-
-
     }
 
-    burger();
-
-    // $navlink.click(function () {
-    //     if ($navbar.hasClass('active')) {
-    //         if (!isChangingState) {
-    //             isChangingState = true;
-    //             if (isOpen) {
-    //                 showOpenBurger();
-    //                 $navbar.removeClass('active');
-    //                 $body.removeClass('no__scroll');
-    //                 $navbar.css({
-    //                     'transform': 'rotate(360deg)'
-    //                 });
-    //             }
-    //         }
-    //     }
-    // });
+    navigation();
 
 
-
-
-
-
-
-
-
-
-
-
-
+    // ANIMATION MUSIC TOGGLE
     function musicToggle() {
         const music__wrapper = document.querySelector('.music__wrapper');
         const spans = document.querySelectorAll('span');
@@ -133,9 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     musicToggle();
 
+    // ANIMATION HOME IMG SHADOWS
     function homeImgShadows() {
-        // jeśli wielkość okna jest mniejsza niż 768px to nie wykonuj kodu
-
         const homeImgShadows = document.querySelector('.home__img-shadows');
         document.addEventListener('mousemove', e => {
             if (window.innerWidth < 888) return;
@@ -145,6 +110,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     homeImgShadows();
+
+    // ANIMATION SUBTITLE LEFT
+    function subtitleLeftAnimation() {
+        const textWrapper = document.querySelector('.subtitle__left-animation');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<pre class='letter'>$&</pre>");
+        let currentTextIndex = 0;
+        // Change text here
+        const textChange = ['stand out and change\nthe game', 'impress and make your\ncustomer return', 'inspire and develop\na relationship', 'and attract new\ncustomers'];
+
+        function animateText() {
+            anime.timeline()
+                .add({
+                    targets: '.subtitle__left-animation .letter',
+                    scale: [3, 1],
+                    opacity: [0, 1],
+                    translateZ: 0,
+                    easing: "easeOutExpo",
+                    duration: 1000,
+                    delay: (el, i) => 70 * i
+                }).add({
+                    targets: '.subtitle__left-animation',
+                    opacity: 1,
+                    duration: 3000,
+                    easing: "easeOutExpo",
+                    complete: function (anim) {
+                        currentTextIndex = (currentTextIndex + 1) % textChange.length;
+                        textWrapper.innerHTML = textChange[currentTextIndex].replace(/\S/g, "<pre class='letter'>$&</pre>");
+                        animateText();
+                    }
+                });
+        }
+
+        setTimeout(() => {
+            animateText();
+        }, 3000);
+    }
+    subtitleLeftAnimation();
+
+
+
 });
 
 
@@ -153,6 +158,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+        // Animacja pojawiania się kolejnych liter:
+
+        // Skalowanie od 4 do 1 trwa 1000 ms.
+        // Przejście z przezroczystości 0 na 1 trwa 1000 ms.
+        // Opoznienie między pojawieniem kolejnych liter wynosi 70ms.
+        // Szacunkowy czas animacji dla każdej litery to około 70 * liczba_liter + 1000 ms.
+        // Animacja zanikania tekstu:
+
+        // Przejście z przezroczystości 1 na 0 trwa 1000 ms.
+        // Opoznienie przed zmianą tekstu wynosi 1000 ms.
+        // Szacunkowy czas całej animacji zanikania tekstu to około 2000 ms.
 
 
 

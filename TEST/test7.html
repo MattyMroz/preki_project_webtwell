@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .subtitle__left {
+            position: absolute;
+            top: 23%;
+            left: 5rem;
+            font-size: 3rem;
+            text-align: left;
+            white-space: nowrap;
+            text-transform: uppercase;
+            z-index: var(--z100);
+        }
+
+        .subtitle__left span:nth-child(1) {
+            color: red;
+            font-size: 1rem;
+            text-transform: none;
+        }
+
+        /* .animate-out {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="subtitle__left text__filter">
+        <span>Right now&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+        Let your business<br>
+        <span class="subtitle__left-animation">
+            stand out and change<br>
+            the game
+        </span>
+
+        <!-- <span>impress and make your<br>customer return</span>
+        <span>inspire and develop<br>a relationship</span>
+        <span>and attract new<br>customers</span> -->
+    </div>
+
+
+    <script>
+        const subtitle = document.querySelector('.subtitle__left-animation');
+        const animations = [
+            'impress and make your<br>customer return',
+            'inspire and develop<br>a relationship',
+            'and attract new<br>customers'
+        ];
+
+
+        setInterval(() => {
+
+        }, 2000);
+    </script>
+</body>
+
+</html>
