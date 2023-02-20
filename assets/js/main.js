@@ -55,10 +55,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetOffset = target.offsetTop;
                 const headerHeight = header.offsetHeight;
                 const scrollTo = targetOffset - headerHeight;
-                window.scrollTo({
-                    top: scrollTo,
-                    behavior: 'smooth'
-                });
+                // jQuery bo fajnie działa *_*, może zwalniać strone
+                $('html, body').animate({
+                    scrollTop: scrollTo
+                }, 1000);
+
+                return false;
+                // Alternatywa bez jQuery
+                // window.scrollTo({
+                //     top: scrollTo,
+                //     behavior: 'smooth',
+                // });
             });
         });
     }
@@ -147,9 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
     subtitleLeftAnimation();
-
-
-
 });
 
 
