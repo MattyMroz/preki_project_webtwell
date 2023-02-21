@@ -53,7 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault();
                 const target = document.querySelector(link.getAttribute('href'));
                 const targetOffset = target.offsetTop;
-                const headerHeight = header.offsetHeight;
+                let headerHeight = header.offsetHeight;
+                // Jeśli szerokość okna jest większa niż 1000px i link prowadzi do sekcji services, to headerHeight = 0 - zabieg stylistyczny
+                if (window.innerWidth > 1000 && link.getAttribute('href') === '#services') {
+                    headerHeight = 0;
+                }
                 const scrollTo = targetOffset - headerHeight;
                 // jQuery bo fajnie działa *_*, może zwalniać strone
                 $('html, body').animate({
@@ -110,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function homeImgShadows() {
         const homeImgShadows = document.querySelector('.home__img-shadows');
         document.addEventListener('mousemove', e => {
-            if (window.innerWidth < 888) return;
+            if (window.innerWidth < 1000) return;
             const x = (e.clientX / window.innerWidth);
             const y = (e.clientY / window.innerHeight);
             homeImgShadows.style.transform = `translate3D(${x * 5 - 3}%, ${y * 5}%, 0)`;
@@ -154,6 +158,65 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000);
     }
     subtitleLeftAnimation();
+
+    // SERVICES ANIMATION LETTERS DROP AND CHANGE TEXT
+    function titleServicesAnimation() {
+        let words = document.getElementsByClassName('word');
+        let wordArray = [];
+        let currentWord = 0;
+
+        words[currentWord].style.opacity = 1;
+        for (let i = 0; i < words.length; i++) {
+            splitts__letters(words[i]);
+        }
+
+        function changeWord() {
+            let cw = wordArray[currentWord];
+            let nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+            for (let i = 0; i < cw.length; i++) {
+                animatets__letterOut(cw, i);
+            }
+
+            for (let i = 0; i < nw.length; i++) {
+                nw[i].className = 'ts__letter behind';
+                nw[0].parentElement.style.opacity = 1;
+                animatets__letterIn(nw, i);
+            }
+
+            currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
+        }
+
+        function animatets__letterOut(cw, i) {
+            setTimeout(function () {
+                cw[i].className = 'ts__letter out';
+            }, i * 80);
+        }
+
+        function animatets__letterIn(nw, i) {
+            setTimeout(function () {
+                nw[i].className = 'ts__letter in';
+            }, 340 + (i * 80));
+        }
+
+        function splitts__letters(word) {
+            let content = word.innerHTML;
+            word.innerHTML = '';
+            let ts__letters = [];
+            for (let i = 0; i < content.length; i++) {
+                let ts__letter = document.createElement('span');
+                ts__letter.className = 'ts__letter';
+                ts__letter.innerHTML = content.charAt(i);
+                word.appendChild(ts__letter);
+                ts__letters.push(ts__letter);
+            }
+
+            wordArray.push(ts__letters);
+        }
+
+        changeWord();
+        setInterval(changeWord, 4000);
+    }
+    titleServicesAnimation();
 });
 
 

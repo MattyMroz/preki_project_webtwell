@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: .2s linear;
+        }
+
+        .word {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .ts__letter {
+            display: inline-block;
+            position: relative;
+            transform: translateZ(2rem);
+            transform-origin: 50% 50% 2rem;
+        }
+
+        .ts__letter.out {
+            transform: rotateX(90deg);
+            transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+
+        .ts__letter.behind {
+            transform: rotateX(-90deg);
+        }
+
+        .ts__letter.in {
+            transform: rotateX(0deg);
+            transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="section__title text__filter" data-aos="fade-up" data-aos-duration="1100" data-aos-delay="200"
+        data-aos-offset="0">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WE&nbsp;
+        <span class="title__services-animation word">ENVISION</span>
+        <span class="title__services-animation word">BILD</span>
+        <span class="title__services-animation word">SCALE</span>
+    </h2>
+
+    <script>
+        var words = document.getElementsByClassName('word');
+        var wordArray = [];
+        var currentWord = 0;
+
+        words[currentWord].style.opacity = 1;
+        for (var i = 0; i < words.length; i++) {
+            splitts__letters(words[i]);
+        }
+
+        function changeWord() {
+            var cw = wordArray[currentWord];
+            var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+            for (var i = 0; i < cw.length; i++) {
+                animatets__letterOut(cw, i);
+            }
+
+            for (var i = 0; i < nw.length; i++) {
+                nw[i].className = 'ts__letter behind';
+                nw[0].parentElement.style.opacity = 1;
+                animatets__letterIn(nw, i);
+            }
+
+            currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
+        }
+
+        function animatets__letterOut(cw, i) {
+            setTimeout(function () {
+                cw[i].className = 'ts__letter out';
+            }, i * 80);
+        }
+
+        function animatets__letterIn(nw, i) {
+            setTimeout(function () {
+                nw[i].className = 'ts__letter in';
+            }, 340 + (i * 80));
+        }
+
+        function splitts__letters(word) {
+            var content = word.innerHTML;
+            word.innerHTML = '';
+            var ts__letters = [];
+            for (var i = 0; i < content.length; i++) {
+                var ts__letter = document.createElement('span');
+                ts__letter.className = 'ts__letter';
+                ts__letter.innerHTML = content.charAt(i);
+                word.appendChild(ts__letter);
+                ts__letters.push(ts__letter);
+            }
+
+            wordArray.push(ts__letters);
+        }
+
+        changeWord();
+        setInterval(changeWord, 4000);
+
+
+    </script>
+</body>
+
+</html>
