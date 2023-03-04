@@ -217,6 +217,82 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(changeWord, 4000);
     }
     titleServicesAnimation();
+
+
+    function servicesAnimation() {
+        const listItems = document.querySelectorAll('.list__services-animation li');
+        const newText = [['Digital product design', 'UX/UI research & design', 'Web design', 'Brand identity design', 'Content strategy'],
+        ['Solution design', 'Web App development', 'E-commerce development', 'Website development', 'Website management'],
+        ['Google Ads', 'Social media Ads', 'SEO', 'Email marketing', 'Social media management']];
+        let currentTextIndex = 0;
+
+        function changeText() {
+            const currentText = newText[currentTextIndex];
+
+            listItems.forEach((item, index) => {
+                item.style.opacity = 0;
+                setTimeout(() => {
+                    item.textContent = currentText[index];
+                    item.style.opacity = 1;
+                }, 500);
+            });
+
+            currentTextIndex = (currentTextIndex + 1) % newText.length;
+        }
+
+        changeText();
+        setInterval(changeText, 4000);
+    }
+
+    servicesAnimation();
+
+
+
+
+
+    function portfolioScroll() {
+        const scroll = document.querySelector(".scroll");
+        let isDown = false;
+        let scrollX;
+        let scrollLeft;
+
+        // Mouse Up Function
+        scroll.addEventListener("mouseup", () => {
+            isDown = false;
+            scroll.classList.remove("active");
+        });
+
+        // Mouse Leave Function
+        scroll.addEventListener("mouseleave", () => {
+            isDown = false;
+            scroll.classList.remove("active");
+        });
+
+        // Mouse Down Function
+        scroll.addEventListener("mousedown", (e) => {
+            e.preventDefault();
+            isDown = true;
+            scroll.classList.add("active");
+            scrollX = e.pageX - scroll.offsetLeft;
+            scrollLeft = scroll.scrollLeft;
+        });
+
+        // Mouse Move Function
+        scroll.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            let element = e.pageX - scroll.offsetLeft;
+            let scrolling = (element - scrollX) * 2;
+            scroll.scrollLeft = scrollLeft - scrolling;
+        });
+
+    }
+
+    portfolioScroll();
+
+
+
+
 });
 
 
