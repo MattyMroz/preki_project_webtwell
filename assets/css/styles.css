@@ -49,13 +49,16 @@
     --subtitle-font-size: 4rem;
     --text-font-size: var(--small-font-size);
 
-    --subtotle-contact-font-size: 3rem;
-    --subtotle-contact-font-size-2: 2rem;
+    --subtitle-contact-font-size: 3rem;
+    --subtitle-contact-font-size-2: 2rem;
 
     --section-title-font-size: 6.5vw;
     --section-subtitle-font-size: 10rem;
 
     --portfolio-title-font-size: 15vw;
+    --contact-us-title-font-size: 15vw;
+
+    --footer-arrow-font-size: 10rem;
 
     /* ========== CONTAINERS ========== */
     --containter-width: 100%;
@@ -684,12 +687,12 @@ textarea {
 }
 
 .home__contact-link {
-    font-size: var(--subtotle-contact-font-size);
+    font-size: var(--subtitle-contact-font-size);
     color: var(--first-color);
 }
 
 .home__contact-text {
-    font-size: var(--subtotle-contact-font-size-2);
+    font-size: var(--subtitle-contact-font-size-2);
     font-family: var(--font-inter);
     letter-spacing: -1px;
 }
@@ -700,7 +703,7 @@ textarea {
 }
 
 .home__contact span a sub {
-    font-size: var(--subtotle-contact-font-size);
+    font-size: var(--subtitle-contact-font-size);
 }
 
 .animate-out {
@@ -779,9 +782,9 @@ textarea {
 }
 
 /* ostatni section nie ma marginu */
-/* .section:last-child {
+.section:last-child {
     margin-bottom: 0;
-} */
+}
 
 .section__title {
     margin: 2rem 0;
@@ -1070,47 +1073,121 @@ textarea {
 
 /* =============== CONTACT US =============== */
 #contact_us .container .content {
-    margin-bottom: 200rem;
+    margin-bottom: 0;
 }
+
+#contact_us .container .scrolling__text {
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    background: var(--body-color);
+    color: var(--text-color);
+    margin: -2rem 0 0 0;
+    border-bottom: 1rem solid var(--text-color);
+    padding: 0;
+
+}
+
+#contact_us .container .scrolling__right-to-left {
+    display: flex;
+    align-items: center;
+}
+
+
+#contact_us .container .scrolling__right-to-left div {
+    display: flex;
+    align-items: center;
+    font-size: var(--contact-us-title-font-size);
+    white-space: nowrap;
+    animation: scrollRigthToLeft 30s linear infinite;
+    animation-delay: -30s;
+}
+
+#contact_us .container .scrolling__right-to-left div:nth-child(2) {
+    animation: scrollRigthToLeft2 30s linear infinite;
+    animation-delay: -15s;
+}
+
+#contact_us .container .content:nth-child(2) {
+    padding: calc(var(--contact-us-title-font-size)*1.25) 0 0 0;
+}
+
+#contact_us .container .content .data {}
+
+#contact_us .container .content .data .nav__list {
+    flex-direction: row;
+}
+
+#contact_us .container .content .data .nav__list .nav__item {
+    /* wycentruj to co jest w środku */
+    display: flex;
+    align-items: center;
+}
+
+#contact_us .container .content .data .nav__list .nav__item .horizontal-line {
+    height: 2px;
+    background-color: var(--text-color);
+    width: 4rem;
+}
+
+
 
 /* =============== FOOTER =============== */
 .footer {
-    padding-bottom: 5rem;
-    box-shadow: 0 4px 30px var(--shadow-color);
+    margin-bottom: 0;
 }
 
-.footer .content {
-    grid-template-columns: repeat(3, 1fr);
-    margin: 3rem 0;
-    text-align: center;
-}
-
-.footer .data h3 {
-    font-size: var(--h2-font-size);
+.footer .container .content {
+    grid-template-columns: 45% 50%;
+    grid-gap: 5%;
     margin-bottom: 3rem;
+    position: relative;
+}
+
+.footer .container .content .data {
+    padding: calc(var(--contact-us-title-font-size)*0.20) 0 0 0;
+}
+
+.footer .container .content .data span {
+    color: var(--text-color);
+    font-size: var(--subtitle-font-size);
     text-transform: uppercase;
 }
 
-.footer .nav__list {
+.footer .container .content .data:nth-child(1) span>span {
+    color: var(--first-color);
+}
+
+.footer .container .content .data:nth-child(2) span {
+    display: flex;
+    align-items: flex-start;
     flex-direction: column;
+    justify-content: space-between;
 }
 
-.footer .nav__item {
-    margin: 1rem 0;
+.footer .container .content .data:nth-child(2) span>span:nth-child(1) {
+    color: var(--secound-color);
+    border-bottom: .5rem solid var(--secound-color);
+    margin-bottom: 2.5rem;
+    padding-bottom: .25rem;
 }
 
-.footer .nav__link {
+.footer .container .content .data:nth-child(2) span>span:nth-child(2) {
+    font-size: var(--tiny-font-size);
+    line-height: .75;
+}
+
+.fotter__arrow {
+    font-size: var(--footer-arrow-font-size) !important;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     padding: 0;
     margin: 0;
+    height: 50%;
 }
 
-.footer__bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: var(--normal-font-size);
-    text-decoration: wavy underline;
-}
 
 /* =============== BREAKPOINTS =============== */
 
@@ -1134,8 +1211,8 @@ textarea {
     :root {
         --subtitle-font-size: 2.5rem;
         --text-font-size: var(--tiny-font-size);
-        --subtotle-contact-font-size: 2.5rem;
-        --subtotle-contact-font-size-2: 1.4rem;
+        --subtitle-contact-font-size: 2.5rem;
+        --subtitle-contact-font-size-2: 1.4rem;
     }
 
     .nav__link {
@@ -1298,8 +1375,8 @@ textarea {
         /* --title-font-size: 25rem; */
         --subtitle-font-size: 3rem;
         --text-font-size: var(--small-font-size);
-        --subtotle-contact-font-size: 3rem;
-        --subtotle-contact-font-size-2: 1.7rem;
+        --subtitle-contact-font-size: 3rem;
+        --subtitle-contact-font-size-2: 1.7rem;
     }
 
     .home__img-shadows span:nth-child(2) {
@@ -1380,8 +1457,8 @@ textarea {
     :root {
         --subtitle-font-size: 2rem;
         --text-font-size: var(--tiny-font-size);
-        --subtotle-contact-font-size: 2rem;
-        --subtotle-contact-font-size-2: 1.5rem;
+        --subtitle-contact-font-size: 2rem;
+        --subtitle-contact-font-size-2: 1.5rem;
     }
 
     .home__img-shadows span:nth-child(4) {
