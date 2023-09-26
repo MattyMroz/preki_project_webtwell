@@ -1,5 +1,7 @@
-# Webtwell
+# PREKI PROJECT WEBTWELL
 
-[Webtwell](https://mattymroz.github.io/PP_PROJECT/)
+[WEBTWELL](https://mattymroz.github.io/preki_project_webtwell/)
+
+_Paused Website Design - (Learning CSS / JS)_
 
 [mateuszmroz001@gmail.com](mailto:mateuszmroz001@gmail.com)
